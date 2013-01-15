@@ -177,7 +177,7 @@ def _wikiDate(wiki_text, date):
     this_year = datetime.date.today().year
     tag = ""
     if year == this_year:
-        tag = u"{{{{ShowYear}}}}{0}月{1}日，".format(month, day)
+        tag = u"{{{{ShowYear|{0}}}}}{1}月{2}日，".format(year, month, day)
     else:
         tag = u"{0}年{1}月{2}日，".format(year, month, day)
     return tag + wiki_text
