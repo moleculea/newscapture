@@ -213,7 +213,7 @@ class News(Page):
             return retrieveDate(self.getSource())
         except Exception, e:
             output.error("Error parsing date in news.\nNews ID: %d\nTitle: %s" % (self.id, self.getNews()))
-            print e
+            output.error(e)
             sys.exit(1)
     
     def getID(self):
@@ -296,7 +296,7 @@ class WikiNews(object):
                 #print src
                 if isValidNews(src, INVALID_PATTERN):            
                     news = self._filter(news, EXCEPTION_LIST, SUB_FILTER, self.api_url)
-                    print news.getWiki()
+                    output.debug(news.getWiki())
                     self.wikinews.append(news)
                     
             while len(self.wikinews) < self.num:   # If number of wiki news is less than num
@@ -306,12 +306,12 @@ class WikiNews(object):
                 #print src
                 if isValidNews(src, INVALID_PATTERN):            
                     news = self._filter(news, EXCEPTION_LIST, SUB_FILTER, self.api_url)
-                    print news.getWiki()
+                    output.debug(news.getWiki())
                     self.wikinews.append(news)
                     
             self.wikinews = sorted(self.wikinews, key=lambda t: t.getDate())
             self.__flag = 1
-            print self.wikinews
+            #print self.wikinews
             self._dump()   # Call _put to dump news to local
             #return self.wikinews
             return
@@ -385,8 +385,10 @@ class WikiNews(object):
             fa = open(self.dir + fn_add, "w")
             fa.write(encode(__news_add))
             fa.close()
-        except:
+            
+        except Exception, e:
             output.error("Cannot write to file %s" % fn_add[1:])
+            print e
             sys.exit(1)
             
     def __refreshNews(self):
@@ -462,7 +464,7 @@ class WikiNews(object):
             
         except Exception, e:
             output.error("Cannot write news.id.")
-            print e
+            #print e
             sys.exit(1)
             
     def __readLastID(self):
@@ -502,7 +504,7 @@ class WikiNews(object):
         if os.path.isdir(d):
             return dir
         else:
-            output.error("The given directory does not exist.")
+            output.error("The given directory: %s does not exist." % d)
             sys.exit(1)
             
     def __str__(self):

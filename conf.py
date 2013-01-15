@@ -17,7 +17,7 @@ Main configuration
     * TEMPLATES       : dictionary mapping target template page at MediaWiki sites
 
 """
-FILE_DIR     = "/Users/shichao/Documents/test/"
+FILE_DIR     = "/home/anshichao/newscapture/local/"
 INDEX_URL    = [
                 "http://news.ustb.edu.cn/html/Article_Class2_1_1.html", 
                 "http://news.ustb.edu.cn/html/Article_Class2_1_2.html",

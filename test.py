@@ -10,8 +10,13 @@ class TestParseURL(unittest.TestCase):
         pass
     def tearDown(self):
         pass
+    
+    def testSem(self):
+        source = u"北京科技大学"
+        api_url = "http://wiki.ibeike.com/api.php" 
+        print newsprocess.semanticParse(source, api_url)
         
-    def testWikiNews(self):
+    def WikiNews(self):
         dir = "/Users/shichao/Documents/test/"
         url = [
                "http://news.ustb.edu.cn/html/Article_Class2_1_1.html", 

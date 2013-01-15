@@ -21,7 +21,7 @@ def encode(text, source_code='utf-8'):
     Global encoding (from Unicode to target encoding)
     Applied to write() on file-like object
     """
-    return text.decode(source_code)
+    return text.encode(source_code)
 
 class output(object):
     """ANSI console colored output"""
@@ -34,11 +34,11 @@ class output(object):
     @staticmethod
     def __out(type, msg):
         if type == output.ERROR:
-            sys.stderr.write("\x1b[1;%dm [%s] %s\x1b[0m\n" % (30 + output.RED, "Error", msg))
+            sys.stderr.write("\x1b[1;%dm [%s] %s\x1b[0m\n" % (30 + output.RED, "Error", msg.encode('utf-8')))
         if type == output.DEBUG:
-            sys.stdout.write("\x1b[1;%dm [%s] %s\x1b[0m\n" % (30 + output.GREEN, "Debug", msg))
+            sys.stdout.write("\x1b[1;%dm [%s] %s\x1b[0m\n" % (30 + output.GREEN, "Debug", msg.encode('utf-8')))
         if type == output.WARNING:
-            sys.stdout.write("\x1b[1;%dm [%s] %s\x1b[0m\n" % (30 + output.YELLOW, "Warning", msg))
+            sys.stdout.write("\x1b[1;%dm [%s] %s\x1b[0m\n" % (30 + output.YELLOW, "Warning", msg.encode('utf-8')))
     @staticmethod
     def error(msg):
         output.__out(output.ERROR, msg)
@@ -142,7 +142,7 @@ def wikiFilter(source, date, candidates, original, url, exceptional):
                 candidates.remove(e)
                 
         for c in candidates:
-            print c
+            output.debug("Matching API: " + c)
             
         cand = copy.deepcopy(candidates)
         
@@ -214,6 +214,7 @@ def semanticParse(source, api_url):
             candidates.append(q.get(True,2)) # Get all items in queue with timeout (1 second)
     except:
         pass
+    #print candidates
     return candidates
     
 
