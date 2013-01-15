@@ -17,9 +17,9 @@ then
 	exit 1
 else
 
-	
 	# Check the size of flag file
-	fsize=$(cat $file_foler$flag | wc -c)
+	echo "Checking flag size: $file_folder$flag ..."
+	fsize=$( cat $file_folder$flag | wc -c)
 	if [ "$fsize" -gt 2 ]
 	then
 		echo "Syncing $news_ref and $news_unref to $wiki_site..."
