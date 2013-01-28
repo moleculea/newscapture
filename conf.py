@@ -35,14 +35,17 @@ INVALID_PATTERN = [
                    ] 
 
 SUB_FILTER = {
-              u".+——(.+)" : r"\1",   # Preserve text after "--"
+              u"\S+\u2014\u2014(\S+)" : r"\1", # \u2014 and \u2015 are common Chinese dashes 
+              u"\S+\u2015\u2015(\S+)" : r"\1",
               u"我校"       : u"北京科技大学",
               u"我国"       : u"中国",
               }
 
 EXCEPTION_LIST = [
                   u"北京科技大学", 
-                  u"北京科技大"
+                  u"北京科技大",
+                  u"勤",
+                  u"党委",
                   ]
 
 TEMPLATES = {
