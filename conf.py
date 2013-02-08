@@ -32,6 +32,7 @@ INVALID_PATTERN = [
                    u"【视频】",      # Those with [Video] tags
                    r"\S+\s+\S+",    # Those with whitespace(s) in the middle
                    r"\S+&nbsp;\S+", # Those with HTML whitespace in the middle
+				   r";",
                    ] 
 
 SUB_FILTER = {
