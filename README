@@ -1,4 +1,6 @@
 newscapture
 
-capture news and sync to MediaWiki site
+feature: capture news and sync to MediaWiki site
 dump txt files for pywikipedia to import
+
+license: BSD License
