@@ -174,7 +174,11 @@ class Page(object):
         """
         self.url = url
         self.info = url.info
+        #print self.info[0].read()
+
         self.__source = decode(self.info[0].read())  # Decode read info (source text) into Unicode
+
+            
         
     def getTitle(self):
         source = self.__source
@@ -291,7 +295,11 @@ class WikiNews(object):
         if latest_id > self.last_id:       # Sync is needed
             output.debug("News detected. Begin to sync...")
             for id in init_ids:
-                news = News(id)
+                new = None
+                try:
+                    news = News(id)
+                except UnicodeDecodeError: # Ignore decoding error from source HTML (GB2312)
+                    continue
                 src = news.getNews()
                 #print src
                 if isValidNews(src, INVALID_PATTERN):            
