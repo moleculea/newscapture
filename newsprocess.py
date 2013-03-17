@@ -8,6 +8,7 @@ import copy
 from xml.dom.minidom import parseString
 from threading import Thread
 from Queue import Queue
+from conf import *
 
 def decode(text, source_code='gb2312'):
     """
@@ -53,8 +54,8 @@ def _parseDate(source):
     """
     Parse date return raw
     """
-    sem_pattern = u'(\d{4})年(\d+)月(\d+)日'        # Semantic date pattern 
-    sys_pattern = r'(\d{4})-(\d+)-(\d+)'           # System date pattern
+    sem_pattern = SEM_DATE_PATTERN         # Semantic date pattern 
+    sys_pattern = SYS_DATE_PATTERN         # System date pattern
     
     sem_match = re.search(sem_pattern, source)
     sys_match = re.search(sys_pattern, source)

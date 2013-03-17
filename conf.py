@@ -11,6 +11,8 @@ Main configuration
     * ID_PATTERN      : pattern for matching news ID
     * Q_PATTERN       : quasi-pattern URL string for substituting news ID
     * API_URL         : URL of MediaWiki API (URI of path to api.php)
+    * SEM_DATE_PATTERN: system-generated date pattern in the news page (e.g. 2013-11-01)
+    * SYS_DATE_PATTERN: semantic generated date pattern in the news page (e.g. March 1, 2013)
     * INVALID_PATTERN : nullify news that match any patterns listed
     * SUB_FILTER      : replacement patterns
     * EXCEPTION_LIST  : exceptions for semantic parse matching which generates wiki links
@@ -27,8 +29,15 @@ NEWS_NUM    = 4
 ID_PATTERN  = r"Article_Show\.asp\?ArticleID=(\d+)"
 Q_PATTERN   = "http://news.ustb.edu.cn/html/article/Article_show%s.html"
 API_URL     = "http://wiki.ibeike.com/api.php" 
+
+
+SEM_DATE_PATTERN = u'(\d{4})年(\d+)月(\d+)日'        # Semantic date pattern 
+SYS_DATE_PATTERN = r'(\d{4})-(\d+)-(\d+)'           # System date pattern
+
+
 INVALID_PATTERN = [
                    u"^.+：",        # Derivative news prefix (e.g. 光明日报：)
+                   u"^.+:",
                    u"【视频】",      # Those with [Video] tags
                    r"\S+\s+\S+",    # Those with whitespace(s) in the middle
                    r"\S+&nbsp;\S+", # Those with HTML whitespace in the middle
