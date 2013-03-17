@@ -41,16 +41,15 @@ See if the following files are created in FILE_DIR:
     news_ref.txt
     news_unref.txt
 
+* **flag** indicates whether there is NEW news each time you execute main.py
 
-    * **flag** indicates whether there is NEW news each time you execute main.py
+* **news.id** stores the ID of the last synced news (largest)
 
-    * **news.id** stores the ID of the last synced news (largest)
+* **news_append.txt** stores NEW news which differed from the last sync. This is useful for you to collect news to a single list page on your MediaWiki site
 
-    * **news_append.txt** stores NEW news which differed from the last sync. This is useful for you to collect news to a single list page on your MediaWiki site
+* **news_ref.txt**: news with reference links
 
-    * **news_ref.txt**: news with reference links
-
-    * **news_unref.txt**: news with no reference links
+* **news_unref.txt**: news with no reference links
 
 4. Deploy: use cron to periodically run your customized shell script.
 
