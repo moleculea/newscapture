@@ -28,11 +28,13 @@ _____
 3. Test:
 
 .. code-block:: bash
+
     $ python main.py
 
 See if the following files are created in FILE_DIR:
 
 .. code-block:: bash
+
     flag
     news_append.txt
     news.id
