@@ -13,12 +13,12 @@ ____________
 * An authorized bot account on your MediaWiki to be associated with Pywikipediabot
 
 Features
---------
+________
 * Capture news from the specified site and dump into TXT files (can be imported to MediaWiki site using Pywikipediabot)
-* Parse news contents and provide internal links of matched existing pages on your MediaWiki sites 
+* Parse news contents and provide internal links of matched existing pages (through API) on your MediaWiki site
 * Provide both unreferenced news and referenced news
 * Configure number of news to capture each time
-* Configure filtering rules
+* Configure filtering rules, substitute rules and internal links matching rules
 
 Install
 _______
@@ -33,7 +33,13 @@ Usage
 _____
 
 1. Configuration: edit conf.py; see docstring in this file for help info;
-2. Script configuration (optional): edit sample sync.sh or write your own script; if you use the sample script, create a file named "flag". It indicates whether there is NEW news each time you execute main.py
+2. Script configuration (optional): edit sample sync.sh or write your own script; if you use the sample script, create an empty file named "flag":
+
+.. code-block:: bash
+	
+	$ touch flag
+
+It indicates whether there is NEW news each time you execute main.py;
 
 3. Test:
 
@@ -56,7 +62,8 @@ See if the following files are created in <FILE_DIR>:
 
 .. code-block:: bash
 
-	$ python /path/to/pywikipedia/add_text.py -textfile:/path/to/<FILE_DIR>/news_append.txt -page:<WIKI_PAGE> -bottom -always
+	$ python /path/to/pywikipedia/add_text.py -textfile:/path/to/<FILE_DIR>/news_append.txt \
+	-page:<WIKI_PAGE> -bottom -always
 
 * **news_ref.txt**: news with reference links. This file has the following format:
 
@@ -72,19 +79,28 @@ Use the following Pywikipedia command to upload this file to your MediaWiki site
 
 .. code-block:: bash
 
-	$ python /path/to/pywikipedia/pagefromfile.py -start:AAAA -end:BBBB -titlestart:TTTT -titleend:TTTT -file:/path/to/news_ref.txt
+	$ python /path/to/pywikipedia/pagefromfile.py -start:AAAA -end:BBBB \
+	-titlestart:TTTT -titleend:TTTT -file:/path/to/news_ref.txt
 
 * **news_unref.txt**: news with no reference links. The Pywikipedia command to upload this file is similar to that of news_ref.txt
 
-4. Deploy: use cron to periodically run your customized shell script.
+4. Deploy: use cron to periodically run your customized shell script. 
+
 .. code-block:: bash
+
 	$ crontab -e
 
 Use the following sample schedule if you want to sync news every two hours
+
 ..
+
 	0 */2 * * * /path/to/sync.sh >/dev/null 2>&1
 
-	
+Author
+______
+
+Email: moleculeaweb AT gmail DOT com
+
 License
 _______
 
