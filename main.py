@@ -1,4 +1,7 @@
 # -*- coding: utf-8  -*-
+# (C) Shichao An, 2013
+#
+# Distributed under the terms of the BSD license.
 import news
 from conf import *
 def main():

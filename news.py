@@ -246,7 +246,7 @@ class WikiNews(object):
     Represent a list of valid News objects to be put on the designated wiki page
     """
 
-    def __init__(self, dir, url, num, pattern, q_pattern, api_url, bot_tag="<!-- automatically created content  by Mitsuki Kojima %s-->" %(datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")), templates=TEMPLATES):
+    def __init__(self, dir, url, num, pattern, q_pattern, api_url, bot_tag="<!-- automatically created content by %s %s-->" %(BOT_NAME, datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")), templates=TEMPLATES):
         """
         @param dir: directory (absolute path, ending with slash /) of input (news.id) and output files
         @param url: URLs (List) of the index pages that lists latest news
