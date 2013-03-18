@@ -1,45 +1,46 @@
 newscapture for MediaWiki
 =========================
-Sync news titles from an external news website to a specific template page on your MediaWiki site.
+Sync news titles from an external news website to specific pages on your MediaWiki site.
 
 Applicability
 _____________
 * MediaWiki site which is routinely maintained with `Pywikipediabot <http://www.mediawiki.org/wiki/Manual:Pywikipediabot>`_
 * External news site which does not provide RSS feed, but has only index pages of news titles and links (URLs are ID-incremented)
 
-Prerequisite
+Prerequisites
 ____________
 * `Pywikipediabot <http://www.mediawiki.org/wiki/Manual:Pywikipediabot>`_
 * An authorized bot account on your MediaWiki to be associated with Pywikipediabot
 
 Features
 ________
-* Capture news from the specified site and dump into TXT files (can be imported to MediaWiki site using Pywikipediabot)
+* Capture and dump news from the specified site into TXT files (can be imported to MediaWiki site using Pywikipediabot)
 * Parse news contents and provide internal links of matched existing pages (through API) on your MediaWiki site
 * Provide both unreferenced news and referenced news
-* Configure number of news to capture each time
+* Set and prioritize multiple index pages of news
+* Set arbitrary number of news to capture each time
 * Configure filtering rules, substitute rules and internal links matching rules
 
 Install
 _______
 1. Download the code and put it wherever you like
-2. Create a directory wherever you like to hold output and input files (FILE_DIR in conf.py)
+2. Create a directory wherever you like to hold output and input files (FILE_DIR in ``conf.py``)
 
 .. code-block:: bash
 	
-	$ mkdir news_files
+	$ mkdir <FILE_DIR>
 
 Usage
 _____
 
-1. Configuration: edit conf.py; see docstring in this file for help info;
-2. Script configuration (optional): edit sample sync.sh or write your own script; if you use the sample script, create an empty file named "flag":
+1. Configuration: edit ``conf.py``; see docstring in this file for help info;
+2. Script configuration (optional): edit sample ``sync.sh`` or write your own script; if you use the sample script, create an empty file named ``flag``:
 
 .. code-block:: bash
 	
 	$ touch flag
 
-It indicates whether there is NEW news each time you execute main.py;
+It indicates whether there is NEW news each time you execute ``main.py``;
 
 3. Test:
 
@@ -47,7 +48,7 @@ It indicates whether there is NEW news each time you execute main.py;
 
     $ python main.py
 
-See if the following files are created in <FILE_DIR>:
+See if the following files are created in ``<FILE_DIR>``:
 
 .. code-block:: bash
 
@@ -82,7 +83,7 @@ Use the following Pywikipedia command to upload this file to your MediaWiki site
 	$ python /path/to/pywikipedia/pagefromfile.py -start:AAAA -end:BBBB \
 	-titlestart:TTTT -titleend:TTTT -file:/path/to/news_ref.txt
 
-* **news_unref.txt**: news with no reference links. The Pywikipedia command to upload this file is similar to that of news_ref.txt
+* **news_unref.txt**: news with no reference links. The Pywikipedia command to upload this file is similar to that of ``news_ref.txt``
 
 4. Deploy: use cron to periodically run your customized shell script. 
 
