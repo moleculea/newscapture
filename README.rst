@@ -70,7 +70,7 @@ See if the following files are created in ``<FILE_DIR>``:
 
 ::
 	
-	AAAA<!-- automatically created content by Foobar-Bot 2013-03-16 14:00:02-->TTTT<Template:NewsPage>TTTT
+	AAAA<!-- automatically created content by Foobar-Bot 2013-03-16 14:00:02-->TTTTTemplate:NewsPageTTTT
 
 	News contents ...
 
@@ -93,7 +93,7 @@ Use the following Pywikipedia command to upload this file to your MediaWiki site
 
 Use the following sample schedule if you want to sync news every two hours
 
-..
+::
 
 	0 */2 * * * /path/to/sync.sh >/dev/null 2>&1
 
