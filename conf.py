@@ -1,10 +1,12 @@
 # -*- coding: utf-8  -*-
 
 """
-Main configuration
-"""
+conf.py: Main Configuration
 
-"""
+Usage:
+  Edit sample values of the following variables to fit your environment
+
+Description：
     * FILE_DIR        : location for input and output files (ended with slash /)
     * INDEX_URL       : list of URLs for source index pages of news
     * NEWS_NUM        : number of news to capture at one time
@@ -35,14 +37,13 @@ BOT_NAME    = "Mitsuki Kojima"
 SEM_DATE_PATTERN = u'(\d{4})年(\d+)月(\d+)日'        # Semantic date pattern 
 SYS_DATE_PATTERN = r'(\d{4})-(\d+)-(\d+)'           # System date pattern
 
-
 INVALID_PATTERN = [
                    u"^.+：",        # Derivative news prefix (e.g. 光明日报：)
                    u"^.+:",
                    u"【视频】",      # Those with [Video] tags
                    r"\S+\s+\S+",    # Those with whitespace(s) in the middle
                    r"\S+&nbsp;\S+", # Those with HTML whitespace in the middle
-				   r";",
+				           r";",
                    ] 
 
 SUB_FILTER = {
