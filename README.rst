@@ -1,11 +1,11 @@
 newscapture for MediaWiki
 =========================
-Sync news from an external news website to a specific template page on your MediaWiki site.
+Sync news titles from an external news website to a specific template page on your MediaWiki site.
 
 Applicability
 _____________
 * MediaWiki site which is routinely maintained with `Pywikipediabot <http://www.mediawiki.org/wiki/Manual:Pywikipediabot>`_
-* External news site which does not provide RSS feed, but has only an index page of news titles (URLs are ID-incremented)
+* External news site which does not provide RSS feed, but has only index pages of news titles and links (URLs are ID-incremented)
 
 Prerequisite
 ____________
@@ -31,7 +31,7 @@ _____
 
     $ python main.py
 
-See if the following files are created in FILE_DIR:
+See if the following files are created in <FILE_DIR>:
 
 .. code-block:: bash
 
@@ -41,15 +41,33 @@ See if the following files are created in FILE_DIR:
     news_ref.txt
     news_unref.txt
 
-* **flag** indicates whether there is NEW news each time you execute main.py
+* **flag** (optinal): use with the sample sync.sh script; indicates whether there is NEW news each time you execute main.py
 
-* **news.id** stores the ID of the last synced news (largest)
+* **news.id**: stores the ID of the last synced news (largest)
 
-* **news_append.txt** stores NEW news which differed from the last sync. This is useful for you to collect news to a single list page on your MediaWiki site
+* **news_append.txt**: stores NEW news which differed from the last sync. This is useful for you to collect news to a single list page on your MediaWiki site. Use the following Pywikipedia command to upload (append) this file:
 
-* **news_ref.txt**: news with reference links
+.. code-block:: bash
 
-* **news_unref.txt**: news with no reference links
+	$ python /path/to/pywikipedia/add_text.py -textfile:/path/to/<FILE_DIR>/news_append.txt -page:<WIKI_PAGE> -bottom -always
+
+* **news_ref.txt**: news with reference links. This file has the following format:
+
+::
+	
+	AAAA<!-- automatically created content  by Foobar-Bot 2013-03-16 14:00:02-->TTTT<Template:NewsPage>TTTT
+
+	News contents ...
+
+	BBBB
+
+Use the following Pywikipedia command to upload this file to your MediaWiki site: 
+
+.. code-block:: bash
+
+	$ python /path/to/pywikipedia/pagefromfile.py -start:AAAA -end:BBBB -titlestart:TTTT -titleend:TTTT -file:/path/to/news_ref.txt
+
+* **news_unref.txt**: news with no reference links. The Pywikipedia command to upload this file is similar to that of news_ref.txt
 
 4. Deploy: use cron to periodically run your customized shell script.
 
