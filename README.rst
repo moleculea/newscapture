@@ -20,11 +20,21 @@ Features
 * Configure number of news to capture each time
 * Configure filtering rules
 
+Install
+_______
+1. Download the code and put it wherever you like
+2. Create a directory wherever you like to hold output and input files (FILE_DIR in conf.py)
+
+.. code-block:: bash
+	
+	$ mkdir news_files
+
 Usage
 _____
 
-1. Configuration: edit conf.py;
-2. Script configuration (optional): edit sample sync.sh or write your own script;
+1. Configuration: edit conf.py; see docstring in this file for help info;
+2. Script configuration (optional): edit sample sync.sh or write your own script; if you use the sample script, create a file named "flag". It indicates whether there is NEW news each time you execute main.py
+
 3. Test:
 
 .. code-block:: bash
@@ -35,13 +45,10 @@ See if the following files are created in <FILE_DIR>:
 
 .. code-block:: bash
 
-    flag
     news_append.txt
     news.id
     news_ref.txt
     news_unref.txt
-
-* **flag** (optinal): use with the sample sync.sh script; indicates whether there is NEW news each time you execute main.py
 
 * **news.id**: stores the ID of the last synced news (largest)
 
@@ -55,7 +62,7 @@ See if the following files are created in <FILE_DIR>:
 
 ::
 	
-	AAAA<!-- automatically created content  by Foobar-Bot 2013-03-16 14:00:02-->TTTT<Template:NewsPage>TTTT
+	AAAA<!-- automatically created content by Foobar-Bot 2013-03-16 14:00:02-->TTTT<Template:NewsPage>TTTT
 
 	News contents ...
 
@@ -70,7 +77,14 @@ Use the following Pywikipedia command to upload this file to your MediaWiki site
 * **news_unref.txt**: news with no reference links. The Pywikipedia command to upload this file is similar to that of news_ref.txt
 
 4. Deploy: use cron to periodically run your customized shell script.
+.. code-block:: bash
+	$ crontab -e
 
+Use the following sample schedule if you want to sync news every two hours
+..
+	0 */2 * * * /path/to/sync.sh >/dev/null 2>&1
+
+	
 License
 _______
 
