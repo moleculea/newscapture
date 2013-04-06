@@ -487,7 +487,7 @@ class WikiNews(object):
             else:
                 output.warning("news.id does not exist in the given directory. Creating empty news.id")
                 f = open(fname, "w")
-                r = f.readline()
+                r = f.write('0')
                 f.close()
                 
             r = r.strip()
