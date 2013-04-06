@@ -524,16 +524,4 @@ class WikiNews(object):
             return "\n".join(t)
 
 if __name__ == '__main__':
-    test_url = ["http://news.ustb.edu.cn/html/Article_Class2_1_1.html", "http://news.ustb.edu.cn/html/Article_Class2_1_2.html"]
-    #u = URL(test_url)
-    #print u
-    ustb = USTBNewsURL(url = test_url,
-                       pattern = r"Article_Show\.asp\?ArticleID=(\d+)",
-                       start_id=31718,
-                       )
-    ustb.getIDs()
-    print ustb.getAllIDs()
-    print ustb
-    print ustb.getNextID()
-    print ustb.getNextID()
-    print ustb.getAllIDs()
+    print "Please run main.py."

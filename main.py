@@ -1,4 +1,7 @@
 # -*- coding: utf-8  -*-
+"""
+main.py: newscapture for MediaWiki
+"""
 # (C) Shichao An, 2013
 #
 # Distributed under the terms of the BSD license.

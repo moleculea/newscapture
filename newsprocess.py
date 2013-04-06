@@ -258,4 +258,5 @@ def _existTitles(xml):
             exTitles.append(z.getAttribute('title'))
     return exTitles
 
-    
+if __name__ == '__main__':
+    print "Please run main.py." 

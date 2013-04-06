@@ -70,3 +70,6 @@ TEMPLATES = {
                  'news_ref'  :  u"Template:NewsAuto",
                  'news_unref':  u"Template:NewsAutoUntagged",
                  }
+                 
+if __name__ == '__main__':
+    print "Please run main.py."
