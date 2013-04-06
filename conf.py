@@ -1,7 +1,7 @@
 # -*- coding: utf-8  -*-
 
 """
-conf.py: Main Configuration
+conf.py: Main Configuration (with editable sample)
 
 Usage:
   Edit sample values of the following variables to fit your environment

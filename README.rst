@@ -102,10 +102,18 @@ Use the following sample schedule if you want to sync news every two hours
 
 	0 */2 * * * /path/to/sync.sh >/dev/null 2>&1
 
+Version
+_______
+
+0.1
+
+
 Author
 ______
 
 Email: moleculeaweb AT gmail DOT com
+
+
 
 License
 _______
