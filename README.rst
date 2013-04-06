@@ -23,7 +23,7 @@ ________
 
 Install
 _______
-1. Download the code and put it wherever you like
+1. Download the zip file or clone the code, and put it wherever you like
 
 .. code-block:: bash
     
