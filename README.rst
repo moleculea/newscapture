@@ -8,7 +8,7 @@ _____________
 * External news site which does not provide RSS feed, but has only index pages of news titles and links (URLs are ID-incremented)
 
 Prerequisites
-____________
+_____________
 * `Pywikipediabot <http://www.mediawiki.org/wiki/Manual:Pywikipediabot>`_
 * An authorized bot account on your MediaWiki to be associated with Pywikipediabot
 
@@ -24,6 +24,11 @@ ________
 Install
 _______
 1. Download the code and put it wherever you like
+
+.. code-block:: bash
+    
+    $ git clone https://github.com/moleculea/newscapture.git
+
 2. Create a directory wherever you like to hold output and input files (FILE_DIR in ``conf.py``)
 
 .. code-block:: bash
