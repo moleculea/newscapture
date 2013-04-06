@@ -15,8 +15,10 @@ Description：
     * Q_PATTERN       : quasi-pattern URL string for substituting news ID
     * API_URL         : URL of MediaWiki API (URI of path to api.php)
     * BOT_NAME        : name of the bot account you want to display on wiki page comment
-    * SEM_DATE_PATTERN: system-generated date pattern in the news page (e.g. 2013-11-01)
-    * SYS_DATE_PATTERN: semantic generated date pattern in the news page (e.g. March 1, 2013)
+    * SEM_DATE_PATTERN: semantic generated date pattern in the news page (e.g. March 1, 2013)
+    * SYS_DATE_PATTERN: system-generated date pattern in the news page (e.g. 2013-11-01)
+    * DATE_TAG_THIS_YEAR: output date tag as the prefix of each piece of news if the news is within this year
+    * DATE_TAG        : output date tag as the prefix of each piece of news if the news is not within this year
     * INVALID_PATTERN : nullify news that match any patterns listed
     * SUB_FILTER      : replacement patterns
     * EXCEPTION_LIST  : exceptions for semantic parse matching which generates wiki links
@@ -37,6 +39,9 @@ BOT_NAME    = "Mitsuki Kojima"
 
 SEM_DATE_PATTERN = u'(\d{4})年(\d+)月(\d+)日'        # Semantic date pattern 
 SYS_DATE_PATTERN = r'(\d{4})-(\d+)-(\d+)'           # System date pattern
+
+DATE_TAG_THIS_YEAR = u"{{{{ShowYear|{year}}}}}{month}月{day}日，"
+DATE_TAG = u"{year}年{month}月{day}日，"
 
 INVALID_PATTERN = [
                    u"^.+：",        # Derivative news prefix (e.g. 光明日报：)
