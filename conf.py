@@ -9,6 +9,7 @@ Usage:
 Description：
     * FILE_DIR        : location for input and output files (ended with slash /)
     * INDEX_URL       : list of URLs for source index pages of news
+    * SOURCE_ENCODING : encoding of the source web page (http://docs.python.org/2/library/codecs.html#standard-encodings)
     * NEWS_NUM        : number of news to capture at one time
     * ID_PATTERN      : pattern for matching news ID
     * Q_PATTERN       : quasi-pattern URL string for substituting news ID
@@ -27,7 +28,7 @@ INDEX_URL    = [
                 "http://news.ustb.edu.cn/html/Article_Class2_1_1.html", 
                 "http://news.ustb.edu.cn/html/Article_Class2_1_2.html",
                ]
-
+SOURCE_ENCODING = 'gb2312'
 NEWS_NUM    = 4
 ID_PATTERN  = r"Article_Show\.asp\?ArticleID=(\d+)"
 Q_PATTERN   = "http://news.ustb.edu.cn/html/article/Article_show%s.html"

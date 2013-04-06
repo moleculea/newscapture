@@ -10,7 +10,7 @@ from threading import Thread
 from Queue import Queue
 from conf import *
 
-def decode(text, source_code='gb2312'):
+def decode(text, source_code=SOURCE_ENCODING):
     """
     Global decoding (from source encoding to Unicode)
     Applied to read() on file-like object (returned by urlopen)
